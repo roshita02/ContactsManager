@@ -1,2 +1,73 @@
-<h1>Contacts#index</h1>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<h1>Contacts</h1>
+<% if user_signed_in? %>
+            <%= link_to new_contact_path ,  class: "btn btn-primary" do %>
+                <i class="glyphicon glyphicon-plus"></i> 
+                Add Contact
+              <% end %>
+              <% end %>
+<br/>
+<br>
+
+
+    <%= form_tag contacts_path, :method => 'get', class: 'input-group'  do %>
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for contacts...' %>
+      <span class="input-group-btn">
+        <%= submit_tag "search", class: "btn btn-default" %>
+      </span>
+    <% end %>
+
+
+<br><br>
+
+<div class="panel panel-default">
+    
+    
+    <table class="table">
+      <!--Display result not found message when search result not found-->
+      <% if params[:search].present? %>
+        <% if !@contacts.present? %>
+          No result found
+        <% end %>
+      <% end %>
+        
+      <!--Display all the contacts-->
+        <% @contacts.order(:firstname).each do |contact| %>
+        
+          <tr>
+            <td class="middle">
+                  <div class="media-body">
+                  <h1><%= contact.firstname %> <%= contact.lastname %></h1>
+                  <address>
+                    <strong><%= contact.address %></strong><br>
+                    <% contact.phone.each do |b| %>
+                      <%= b.phone  %>
+                      <% break %>
+                    <% end %>
+                    <br>
+                   
+                     <% contact.email.each do |e| %>
+                      <%= e.email  %>
+                      <% break %>
+                    <% end %>
+                  </address>
+                </div>
+              </div>
+            </td>
+           
+            <td width="10" class="middle">
+                   
+                <%= link_to "Edit", edit_contact_path(contact), class: "btn btn-primary pull-centre", title: "Edit" %>
+            </td>
+            <td width="20" class="middle">
+                  
+                <%= link_to "Delete", contact_path(contact), :method => :delete, class: "btn btn-danger pull-centre", title: "Delete",data: { confirm: "Are you sure ?" }  %>
+                          
+             
+
+           </td>
+          </tr>
+
+      <% end %>
+    
+    </table>            
+  </div>

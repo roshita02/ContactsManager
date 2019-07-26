@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ContactsManger</title>
+    <title>Contacts Manager</title>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color: black" >
+      <div class="container">
+        <div class="navbar-header">
+         
+
+          <%= link_to "Contact Manager", root_path, class: "navbar-brand text-uppercase" %>          
+        </div>
+        <!-- /.navbar-header -->
+        <% if user_signed_in? %>
+          <div class="collapse navbar-collapse" id="navbar-collapse">
+            
+            <div class="navbar-right nav btn">
+            <%= link_to edit_user_registration_path, class: "btn btn-default" do %>
+            <i class="fas fa-user-edit"></i>
+            Edit Profile
+          <% end %>  
+            
+             <%= link_to destroy_user_session_path, :method => 'delete' , class: "btn btn-default" do%>
+            <i class="glyphicon glyphicon-log-out"></i> 
+            Logout
+          <% end %>
+            
+            
+          </div>
+        <% else %>
+        <ul class="navbar-nav pull-right nav">
+          <li class="<%= 'active' if current_page?(new_user_session_path) %>">
+            <%= link_to new_user_session_path(resource_name),class: "pull-right" do%>
+            <i class="fas fa-sign-in-alt"></i>&nbsp;Login
+            <% end %>
+          </li>
+          <li class="<%= 'active' if current_page?(new_user_registration_path) %>">
+            <%= link_to  new_user_registration_path(resource_name) , class: "pull-right" do%>
+            <span class="nav-link"><i class="fas fa-user-plus"></i>&nbsp;Register</span>
+            <% end %>
+          </li>
+          
+
+        </ul> 
+        <% end %>
+      </div>
+    </nav>
+
+
+
+    <div class="container">
+
+          <!--Flash Messages-->
+          <% flash.each do |type, message| %>
+            
+              <%= content_tag :div, class: "alert alert-#{type} alert-dismissible", role: "alert" do %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <%= message %>
+              <% end %> 
+             
+          <% end %> 
+
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
