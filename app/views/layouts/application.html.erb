@@ -40,7 +40,7 @@
         <% else %>
         <ul class="navbar-nav pull-right nav">
           <li class="<%= 'active' if current_page?(new_user_session_path) %>">
-            <%= link_to new_user_session_path(resource_name),class: "pull-right" do%>
+            <%= link_to root_path(resource_name),class: "pull-right" do%>
             <i class="fas fa-sign-in-alt"></i>&nbsp;Login
             <% end %>
           </li>
