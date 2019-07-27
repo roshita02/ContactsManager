@@ -19,5 +19,5 @@ Rails.application.routes.draw do
  # resources :phones
   resources :contacts
   
-  root 'contacts#index' 
+  root 'home#index' 
 end

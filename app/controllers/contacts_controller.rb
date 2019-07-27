@@ -44,10 +44,13 @@ class ContactsController < ApplicationController
   		render 'edit'
   	end
   end
+ 
+
   def find_contact
     @contact = Contact.find(params[:id])
 
   end
+   private
 
   def contact_params
     params.require(:contact).permit(:firstname, :lastname, :address,phone_attributes: Phone.attribute_names.map(&:to_sym).push(:_destroy),email_attributes: Email.attribute_names.map(&:to_sym).push(:_destroy))

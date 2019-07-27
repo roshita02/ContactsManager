@@ -2,8 +2,11 @@
 <html>
   <head>
     <title>Contacts Manager</title>
-   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
+   <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 
@@ -42,7 +45,7 @@
             <% end %>
           </li>
           <li class="<%= 'active' if current_page?(new_user_registration_path) %>">
-            <%= link_to  new_user_registration_path(resource_name) , class: "pull-right" do%>
+            <%= link_to  new_registration_path(resource_name) , class: "pull-right" do%>
             <span class="nav-link"><i class="fas fa-user-plus"></i>&nbsp;Register</span>
             <% end %>
           </li>
