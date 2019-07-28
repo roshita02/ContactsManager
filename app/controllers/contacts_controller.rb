@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 	 before_action :authenticate_user!
-  before_action :find_contact, only: [:edit, :update, :destroy, :show]
+  before_action :find_contact, only: [:send, :edit, :update, :destroy, :show]
   def index
   	  search = params[:search].to_s.downcase
       @contacts = (Contact.all).where("lower(firstname) LIKE ? 
@@ -18,20 +18,24 @@ class ContactsController < ApplicationController
   	@contact = Contact.new(contact_params)
     @contact.user = current_user
   	if @contact.save
+       #ContactMailer.greeting_email(@contact).deliver_now
   		flash[:success] = "Successfully created new contact"
   		redirect_to contacts_path
   	else
   		render 'new'
   	end
   end
+  
   def edit
   end
 
   def show
   	
   end
+
+  
   def destroy
-  	@contact.destroy
+    @contact.destroy
   	flash[:success] = "Successfully deleted contact"
     redirect_to contacts_path
   end
