@@ -1,14 +1,18 @@
-<div class="form-group">
-    <%= f.label :phone, class: "control-label col-md-3", id: "formlabel" %> 
-    
-    <div class="col-md-8">
-        
-        <%= f.text_field :phone,class: "form-control" %>
-        
-        
-    </div>
-    <%= f.hidden_field :_destroy %>
-    <% if $count != 1%>
-    <%= link_to 'Delete', '', class: 'remove_record', id: 'deleter'  %>
-    <% end %>
-</div>  
+	<div class="form-group">
+	    <%= f.label :phone, class: "control-label col-md-3", id: "formlabel" %> 
+	    
+	    <div class="row">
+	    	<div class="col-md-2">
+	        <%= f.select :label, ['Work', 'Personal', 'Others'] %>
+			</div>
+
+			<div class="col-md-5">
+	        <%= f.text_field :phone,class: "form-control" %>
+	        </div>
+	    
+	    <%= f.hidden_field :_destroy %>
+	    <% if $count != 1%>
+	    <%= link_to 'Delete', '', class: 'remove_record', id: 'deleter'  %>
+	    <% end %>
+	    </div>
+	</div>  

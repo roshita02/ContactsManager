@@ -3,15 +3,21 @@
     <h1>Contacts</h1>
   </div>
 
-<div class="col-md-4">
-      <div class="text-right">
-            <%= link_to new_contact_path ,  class: "btn btn-primary" do %>
-                <i class="glyphicon glyphicon-plus"></i> 
-                Add Contact
-              <% end %>
+  <div class="col-md-12">
 
-  </div>
-  </div>
+    <div class="text-left">
+      <button type="button" class="btn btn-primary"><%= @contacts.count %> Contact(s)</button>
+    </div>
+
+    <div class="text-right">
+        <%= link_to new_contact_path ,  class: "btn btn-primary" do %>
+            <i class="glyphicon glyphicon-plus"></i> 
+                  Add Contact
+        <% end %>
+    </div>
+
+   </div>
+
 
 </div>
 <% if user_signed_in? %>

@@ -22,12 +22,13 @@
     
                 
               <% if @contact.phone.present? %>
+               <label class="control-label col-md-3">Phone:</label>
                 <% @contact.phone.each do |b| %>
                   <% if !b.phone.empty? %>
                   <div class="form-group">
                     <div class="adderfield">
                       
-                        <label class="control-label col-md-3">Phone:</label>             
+                         <label class="control-label col-md-3"> <%= b.label %> </label>            
                         <div style="padding:9px;" class="col-md-8">
                           <%= b.phone %>        
                         </div> 
@@ -39,15 +40,15 @@
               <% end %>
                 
                  
-
-        
+  
               <% if @contact.email.present? %>
+               <label class="control-label col-md-3">Email:</label>   <br>
                 <% @contact.email.each do |b| %>
                   <% if !b.email.empty? %>
                   <div class="form-group">
                     <div class="adderfield">
                       
-                        <label class="control-label col-md-3">Email:</label>             
+                       <label class="control-label col-md-3"> <%= b.label %> </label>          
                         <div style="padding:9px;" class="col-md-8">
                           <%= b.email %>        
                         </div> 
