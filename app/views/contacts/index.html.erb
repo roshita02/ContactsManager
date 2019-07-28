@@ -1,25 +1,36 @@
-<h1>Contacts</h1>
-<% if user_signed_in? %>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Contacts</h1>
+  </div>
+
+<div class="col-md-4">
+      <div class="text-right">
             <%= link_to new_contact_path ,  class: "btn btn-primary" do %>
                 <i class="glyphicon glyphicon-plus"></i> 
                 Add Contact
               <% end %>
-              <% end %>
-<br/>
-<br>
 
+  </div>
+  </div>
 
+</div>
+<% if user_signed_in? %>
+<div class="row">
+  
+<div class="text-left">
     <%= form_tag contacts_path, :method => 'get', class: 'input-group'  do %>
       <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for contacts...' %>
       <span class="input-group-btn">
         <%= submit_tag "search", class: "btn btn-default" %>
       </span>
     <% end %>
+  </div>
+<div>
+      <% end %>
+    </div>
 
 
-<br><br>
-
-<div class="panel panel-default">
+<div class=" col-md-12 panel panel-default">
     
     
     <table class="table">
@@ -58,7 +69,7 @@
                   
 
             </td>
-          
+            
             <td width="10" class="middle">
                    
                 <%= link_to "Edit", edit_contact_path(contact), class: "btn btn-primary pull-centre", title: "Edit" %>

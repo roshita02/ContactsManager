@@ -13,7 +13,7 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-default navbar-fixed-top" style="background-color: black" >
+  <nav class="navbar navbar-dark navbar-fixed-top bg-primary" >
       <div class="container">
         <div class="navbar-header">
          
@@ -21,12 +21,15 @@
           <%= link_to "Contact Manager", root_path, class: "navbar-brand text-uppercase" %>          
         </div>
         <!-- /.navbar-header -->
+
+      
         <% if user_signed_in? %>
           <div class="collapse navbar-collapse" id="navbar-collapse">
-            
-            <div class="navbar-right nav btn">
+          
+            <div class="navbar-nav navbar-right nav btn">
+
             <%= link_to edit_user_registration_path, class: "btn btn-default" do %>
-            <i class="fas fa-user-edit"></i>
+            <i class="fas fa-user-edit"></i> 
             Edit Profile
           <% end %>  
             
@@ -55,9 +58,6 @@
         <% end %>
       </div>
     </nav>
-
-
-
     <div class="container">
 
           <!--Flash Messages-->
