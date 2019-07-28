@@ -1,7 +1,8 @@
 class ContactMailer < ApplicationMailer
 	
-	def greeting_email(contact)
+		def greeting_email(contact)
 		@contact = contact
-		mail to: @contact.email, subject: "Greetings from Contacts Manager"
+		mail to: "<roshitashakya07@gmail.com>", subject: "Greetings from Contacts Manager"
 	end
 end
+

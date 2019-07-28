@@ -2,9 +2,9 @@ class ContactsController < ApplicationController
 	 before_action :authenticate_user!
   before_action :find_contact, only: [:send, :edit, :update, :destroy, :show]
   def index
-  	  search = params[:search].to_s.downcase
+  	  search = (params[:search]).to_s.downcase
       @contacts = (Contact.all).where("lower(firstname) LIKE ? 
-      	OR lower(lastname) LIKE ? OR lower(address) LIKE ?","%#{search}%","%#{search}%","%#{search}%" )
+      OR lower(lastname) LIKE ? OR lower(address) LIKE ?","%#{search}%","%#{search}%","%#{search}%" )
   end
 
   def new
@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
   		render 'new'
   	end
   end
-  
+
   def edit
   end
 
