@@ -1,80 +1,52 @@
-<div class="panel panel-info">
+<div class="panel panel-default">
     <div class="panel-heading">
-     <strong>Show Contact</strong>
+     <h1>Contact details</h1>
     </div> 
         
-    <div class="form-horizontal">
-            <div class="row">
-              <div class="col-md-12">
-
-                <div class="form-group text-center">
-                  <div style="font-weight: bold; font-size: 30px; text-transform: uppercase;" class="col-md-8">
-                    <%= @contact.firstname %>  <%= @contact.lastname %>  
-                  </div>              
-                </div>
-                
-                <div class="row form-group">
-                  <label class="control-label col-md-3">Address</label>         
-                  <div style="padding:9px;" class="col-md-8">
-                    <%= @contact.address %>  
-                  </div>              
-                </div>
+  <div class="panel-body">
     
-                
-              <% if @contact.phone.present? %>
-               <label class="control-label col-md-3">Phone:</label>
-                <% @contact.phone.each do |b| %>
-                  <% if !b.phone.empty? %>
-                  <div class="form-group">
-                    <div class="adderfield">
-                      
-                         <label class="control-label col-md-3"> <%= b.label %> </label>            
-                        <div style="padding:9px;" class="col-md-8">
-                          <%= b.phone %>        
-                        </div> 
-                      
-                    </div>  
-                  </div>
-                  <% end %> 
-                <% end %>
-              <% end %>
-                
-                 
-  
-              <% if @contact.email.present? %>
-               <label class="control-label col-md-3">Email:</label>   <br>
-                <% @contact.email.each do |b| %>
-                  <% if !b.email.empty? %>
-                  <div class="form-group">
-                    <div class="adderfield">
-                      
-                       <label class="control-label col-md-3"> <%= b.label %> </label>          
-                        <div style="padding:9px;" class="col-md-8">
-                          <%= b.email %>        
-                        </div> 
-                      
-                    </div>  
+    <div class="form-group">
+        <h2><strong><%= @contact.firstname.upcase %>  <%= @contact.lastname.upcase %> </strong> </h2>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Phone</label> 
+        <% if @contact.phone.present? %>
+            <% @contact.phone.each do |b| %>
+                <% if !b.phone.empty? %>
+                  <div class="adderfield">
+                      <label class="control-label"> <%= b.label %> : </label>            
+                      <%= b.phone %>        
                   </div> 
-                  <% end %>
-                <% end %>
-              <% end %>
+                <% end %> 
+            <% end %>
+        <% end %>
+    </div>
+    <hr>
 
-           
+    <div class="form-group">
+        <label class="control-label">Email</label> 
+        <% if @contact.email.present? %>
+            <% @contact.email.each do |b| %>
+                <% if !b.email.empty? %>
+                  <div class="adderfield">
+                      <label class="control-label"> <%= b.label %> : </label>            
+                      <%= b.email %>        
+                  </div> 
+                <% end %> 
+            <% end %>
+        <% end %>
+    </div>
+    <hr>
 
-                
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">          
-              <%= link_to "Edit", edit_contact_path, class: "btn btn-primary" %>
-              <%= link_to "Delete", contact_path,:method => :delete, class: "btn btn-danger", title: "Delete", data: { confirm: "Are you sure ?" }%> 
-              <%= link_to "Back", contacts_path, class: "btn btn-primary" %>            
-          </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      
+    <div class="form-group">
+        <label class="control-label">Address</label> 
+        <div><%= @contact.address %></div>
+    </div>
+
+    <div class="form-group">          
+        <%= link_to "Edit", edit_contact_path, class: "btn btn-primary" %>
+        <%= link_to "Delete", contact_path,:method => :delete, class: "btn btn-danger", title: "Delete", data: { confirm: "Are you sure ?" }%> 
+         <%= link_to "Back", contacts_path, class: "btn btn-primary" %>            
+    </div>
 </div>

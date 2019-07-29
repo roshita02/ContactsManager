@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
   	if @contact.save
        #ContactMailer.greeting_email(@contact).deliver_now
   		flash[:success] = "Successfully created new contact"
-  		redirect_to contacts_path
+  		redirect_to contact_path(@contact)
   	else
   		render 'new'
   	end
