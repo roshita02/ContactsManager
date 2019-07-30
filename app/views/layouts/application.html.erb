@@ -13,7 +13,7 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-dark navbar-fixed-top bg-primary" >
+  <nav class="navbar navbar-fixed-top" >
       <div class="container">
         <div class="navbar-header">
          
@@ -45,7 +45,7 @@
           
             <div class="navbar-nav navbar-right nav btn">
 
-            <%= link_to root_path(resource_name),class: "btn btn-default" do%>
+            <%= link_to new_session_path(resource_name),class: "btn btn-default" do%>
             <i class="fas fa-sign-in-alt"></i>&nbsp;Login
             <% end %>
             

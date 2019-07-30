@@ -1,6 +1,6 @@
-<div class="panel panel-default">
+<div class="panel panel-default custom-panel-position">
   <div class="panel-heading">
-    <h1><i class="fas fa-user-edit"></i> Edit Profile</h1>
+    <h4><i class="fas fa-user-edit"></i> Edit Profile</h4>
   </div>
   <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -26,12 +26,11 @@
           </div>
 
           <div class="form-group">
-            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.label :current_password %> <br />
             <%= f.password_field :current_password, autocomplete: "current-password" , class: "form-control", style:"width : 66%" %>
           </div>
-       
-    
-
+    </div>
+    <div class="panel-footer">
         <div class="form-inline">
               <%= f.submit "Update" ,class: "btn btn-primary" %>
               

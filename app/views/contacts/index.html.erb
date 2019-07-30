@@ -1,85 +1,63 @@
-  <div class="row">
-
-    <div class="col-md-8"><h1>Contacts</h1></div>
+<div class="row">
+  <div class="col-md-8"><h1>Contacts</h1></div>
     <div class="col-md-4" style="padding-top: 20px; padding-left: 130px">
       <button type="button" class="btn btn-primary"><%= @contacts.count %> Contact(s)</button>
       <%= link_to new_contact_path ,  class: "btn btn-primary" do %>
-          <i class="glyphicon glyphicon-plus"></i> 
-                Add Contact
+      <i class="glyphicon glyphicon-plus"></i> 
+      Add Contact
       <% end %>
     </div>
+  </div>
 
-   </div>
-
-<% if user_signed_in? %>
-<div class="row">
-  
-<div class="text-left">
-    <%= form_tag contacts_path, :method => 'get', class: 'input-group'  do %>
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="text-left">
+      <%= form_tag contacts_path, :method => 'get', class: 'input-group'  do %>
       <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for contacts...' %>
       <span class="input-group-btn">
-        <%= submit_tag "search", class: "btn btn-default" %>
+      <%= submit_tag "search", class: "btn btn-default" %>
       </span>
-    <% end %>
-  </div>
-<div>
       <% end %>
-    </div>
+      </div>
+    <div>
+  <% end %>
+</div>
 
 
 <div class=" col-md-12 panel panel-default">
-    
-    
-    <table class="table">
-      <!--Display result not found message when search result not found-->
-      <% if params[:search].present? %>
-        <% if !@contacts.present? %>
-          No result found
-        <% end %>
+  <table class="table">
+    <!--Display result not found message when search result not found-->
+    <% if params[:search].present? %>
+      <% if !@contacts.present? %>
+        No result found
       <% end %>
+    <% end %>
         
       <!--Display all the contacts-->
-        <% @contacts.order(:firstname).each do |contact| %>
-        
-          <tr>
-            <td class="middle">
-                  <div class="media-body">
-                  <h1><%= contact.firstname.capitalize %> <%= contact.lastname.capitalize %></h1>
-                  <!-- <address>
-                    <strong><%= contact.address %></strong><br>
-                    <% contact.phone.each do |b| %>
-                      <%= b.phone  %>
-                      <% break %>
-                    <% end %>
-                    <br>
-                   
-                     <% contact.email.each do |e| %>
-                      <%= e.email  %>
-                      <% break %>
-                    <% end %>
-                  </address> -->
-                </div>
-              </div>
-            </td>
-            <td width="10" class="middle">
-              <%= link_to "Show",contact, class: "btn btn-info", title: "View" %>
-            </td>
-                    
-            
-            <td width="90" class="middle">
-              <div class="btn btn-default">
-               <%= link_to "Send Mail", class: "btn btn-primary pull-centre", :controller => "contacts", :action => "send_mail", :id => contact.id %>
-              </div>
-            </td>
+    <% @contacts.order(:firstname).each do |contact| %>
+      <tr>
+          <td class="middle">
+          <h1><%= contact.firstname.capitalize %> <%= contact.lastname.capitalize %></h1>
+          </td>
+          
+          <td width="10" class="middle">
+          <%= link_to "Show",contact, class: "btn btn-info", title: "View" %>
+          </td>
+          
+          <td width="90" class="middle">
+            <div class="btn btn-default">
+            <%= link_to "Send Mail", class: "btn btn-primary pull-centre", :controller => "contacts", :action => "send_mail", :id => contact.id %>
+            </div>
+          </td>
 
-            <td width="20" class="middle">
-                  
-                <%= link_to "Delete", contact_path(contact), :method => :delete, class: "btn btn-danger pull-centre", title: "Delete",data: { confirm: "Are you sure ?" }  %>
-                          
-           </td>
-          </tr>
+          <td width="20" class="middle">        
+            <%= link_to "Delete", contact_path(contact), :method => :delete, class: "btn btn-danger pull-centre", title: "Delete",data: { confirm: "Are you sure ?" }  %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
 
-      <% end %>
-    
-    </table>            
-  </div>
+  <div class="text-center">
+    <%= will_paginate @contacts %>
+  </div>            
+</div>

@@ -1,6 +1,6 @@
-<div class="panel panel-default">
+<div class="panel panel-default custom-panel-position">
     <div class="panel-heading">
-     <h2><strong><%= @contact.firstname.capitalize %>  <%= @contact.lastname.capitalize %> </strong> </h2>
+     <h3><strong><%= @contact.firstname.capitalize %>  <%= @contact.lastname.capitalize %> </strong> </h3>
     </div> 
         
   <div class="panel-body">
@@ -35,10 +35,13 @@
         <label class="control-label">Address</label> 
         <div><%= @contact.address %></div>
     </div>
+  </div>
 
+  <div class="panel-footer">
     <div class="form-group">          
         <%= link_to "Edit", edit_contact_path, class: "btn btn-primary" %>
         <%= link_to "Delete", contact_path,:method => :delete, class: "btn btn-danger", title: "Delete", data: { confirm: "Are you sure ?" }%> 
          <%= link_to "Back", contacts_path, class: "btn btn-primary" %>            
     </div>
+  </div>
 </div>
