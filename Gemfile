@@ -57,3 +57,4 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
+gem "figaro"

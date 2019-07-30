@@ -18,8 +18,8 @@ class ContactsController < ApplicationController
   	@contact = Contact.new(contact_params)
     @contact.user = current_user
   	if @contact.save
-       #ContactMailer.greeting_email(@contact).deliver_now
-  		flash[:success] = "Successfully created new contact"
+     	flash[:success] = "Successfully created new contact"
+       ContactMailer.greeting_email(@contact).deliver_now
   		redirect_to contact_path(@contact)
   	else
   		render 'new'
