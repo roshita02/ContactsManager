@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   def index
   	  search = (params[:search]).to_s.downcase
       @contacts = (Contact.all).where("lower(firstname) LIKE ? 
-      OR lower(lastname) LIKE ? OR lower(address) LIKE ?","%#{search}%","%#{search}%","%#{search}%" )
+      OR lower(lastname) LIKE ? OR lower(firstname || ' ' || lastname) LIKE ? OR lower(address) LIKE ?","%#{search}%","%#{search}%","%#{search}%","%#{search}%")
   end
 
   def new
