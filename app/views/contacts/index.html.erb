@@ -44,8 +44,8 @@
           <tr>
             <td class="middle">
                   <div class="media-body">
-                  <h1><%= contact.firstname %> <%= contact.lastname %></h1>
-                  <address>
+                  <h1><%= contact.firstname.capitalize %> <%= contact.lastname.capitalize %></h1>
+                  <!-- <address>
                     <strong><%= contact.address %></strong><br>
                     <% contact.phone.each do |b| %>
                       <%= b.phone  %>
@@ -57,7 +57,7 @@
                       <%= e.email  %>
                       <% break %>
                     <% end %>
-                  </address>
+                  </address> -->
                 </div>
               </div>
             </td>
