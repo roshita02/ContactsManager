@@ -6,31 +6,28 @@
   <div class="panel-body">
         <div class="form-group">
         <label class="control-label">Phone</label> 
-        <% if @contact.phone.present? %>
+        
             <% @contact.phone.each do |b| %>
-                <% if !b.phone.empty? %>
                   <div class="adderfield">
                       <label class="control-label"> <%= b.label %> : </label>            
                       <%= b.phone %>        
                   </div> 
-                <% end %> 
             <% end %>
-        <% end %>
+       
     </div>
     <hr>
 
     <div class="form-group">
         <label class="control-label">Email</label> 
-        <% if @contact.email.present? %>
+        
             <% @contact.email.each do |b| %>
-                <% if !b.email.empty? %>
                   <div class="adderfield">
                       <label class="control-label"> <%= b.label %> : </label>            
                       <%= b.email %>        
                   </div> 
-                <% end %> 
+               
             <% end %>
-        <% end %>
+        
     </div>
     <hr>
 

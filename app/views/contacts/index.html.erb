@@ -63,20 +63,19 @@
             </td>
             <td width="10" class="middle">
               <%= link_to "Show",contact, class: "btn btn-info", title: "View" %>
-                  
-
             </td>
+                    
             
-            <td width="10" class="middle">
-                   
-                <%= link_to "Edit", edit_contact_path(contact), class: "btn btn-primary pull-centre", title: "Edit" %>
+            <td width="90" class="middle">
+              <div class="btn btn-default">
+               <%= link_to "Send Mail", class: "btn btn-primary pull-centre", :controller => "contacts", :action => "send_mail", :id => contact.id %>
+              </div>
             </td>
+
             <td width="20" class="middle">
                   
                 <%= link_to "Delete", contact_path(contact), :method => :delete, class: "btn btn-danger pull-centre", title: "Delete",data: { confirm: "Are you sure ?" }  %>
                           
-             
-
            </td>
           </tr>
 

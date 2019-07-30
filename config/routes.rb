@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations"}
  # resources :phones
   resources :contacts
-  
+  get :send_mail, to: 'contacts#send_mail', as: :send_mail
   root 'home#index' 
 end
