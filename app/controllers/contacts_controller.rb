@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_action :find_contact, only: [:send_mail, :edit, :update, :destroy, :show]
   def index
   	  search = (params[:search]).to_s.downcase
-      @contacts = (Contact.all).where("lower(firstname) LIKE ? 
+      @contacts = (current_user.contact).where("lower(firstname) LIKE ? 
       OR lower(lastname) LIKE ? OR lower(firstname || ' ' || lastname) LIKE ? OR lower(address) LIKE ?","%#{search}%","%#{search}%","%#{search}%","%#{search}%" ).paginate(:page => params[:page], :per_page => 7)
   end
 
