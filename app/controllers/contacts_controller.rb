@@ -48,7 +48,7 @@ class ContactsController < ApplicationController
   	@contact.user = current_user
   	if @contact.update(contact_params)
   		flash[:success] = "Successfully updated contact"
-  		redirect_to contacts_path
+  		redirect_to contact_path
   	else
   		render 'edit'
   	end

@@ -1,22 +1,11 @@
 <%= form_for @contact, html: { multipart: true } do |f| %>          
-    <div class="panel-body">
-
-      
+    <div class="panel-body">     
       <% if @contact.errors.any? %>
-
-        <div class="row">
-          <div class="form-group">
-            <div class="alert alert-danger">
-              <h3>Please correct this following errors:</h3>
-
               <ul>
                 <% @contact.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
                 <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
+              </ul> 
 
       <% end %>
 
@@ -63,11 +52,11 @@
         <%= f.label :address %> 
         <%= f.text_field :address, class: "form-control",style:"width : 66%" %>
       </div>     
-
+</div>
+<div class="panel-footer">
 
     <div class="form-inline">
         <button type="submit" class="btn btn-primary">Save</button>
         <%= link_to "Cancel", contacts_path, class: "btn btn-danger" %>           
     </div>
 <% end %>
-</div>

@@ -50,5 +50,7 @@ $(document).on('turbolinks:load', function() {
         $('.fields2').append($(this).data('fields').replace(regexp, time));
         return event.preventDefault();
       });  
+
+      $('.alert-dismissible').fadeOut(6000);
   });
   
