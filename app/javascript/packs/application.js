@@ -51,6 +51,6 @@ $(document).on('turbolinks:load', function() {
         return event.preventDefault();
       });  
 
-      $('.alert-dismissible').fadeOut(6000);
+      $('.alert-dismissible').fadeOut(10000);
   });
   
